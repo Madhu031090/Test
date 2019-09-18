@@ -44,7 +44,6 @@ namespace Test.ControlSteps
             var request = new RestRequest(Method.POST);
             request.AddHeader("content-type", "application/json");
             request.Credentials = new NetworkCredential(UserName, Password);
-  
             var response = client.Execute(request);
             var deserialize = new JsonDeserializer();
             dynamic jsonResponse = JsonConvert.DeserializeObject(response.Content);
@@ -67,13 +66,8 @@ namespace Test.ControlSteps
             var response = client.Execute(request);
             var deserialize = new JsonDeserializer();
             dynamic jsonResponse = JsonConvert.DeserializeObject(response.Content);
-            //CustomerId = jsonResponse.customerId;
-            //FromAccountID = jsonResponse.id;
-            //NewAccountType = "0";
             var result = deserialize.Deserialize<Dictionary<string, string>>(response).ToList();
             testStatus = result[1].Value.ToString();
-
-         
         }
 
         [Then(@"I should get the response of the Bank Account Controller")]
@@ -93,17 +87,10 @@ namespace Test.ControlSteps
         [Then(@"I should get an unauthorized status")]
         public void ThenIShouldGetAnUnauthorizedStatus()
         {
-            // ToDo1 use scenario context here
-            //var testStatus = output[1].Value.ToString();
             Assert.AreEqual("401", testStatus);
         }
     
-        //[Given(@"I am on the Open Bank Account Page")]
-        //public void GivenIAmOnTheOpenBankAccountPage()
-        //{
-        //    string _welcomeMessage = _driver.FindElement(By.ClassName("smallText")).Text;
-        //    Assert.IsNotEmpty(_welcomeMessage);
-        //}
+      
         [When(@"I click on Open New Account link")]
         public void WhenIClickOnOpenNewAccountLink()
         {

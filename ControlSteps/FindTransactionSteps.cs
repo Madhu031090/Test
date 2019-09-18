@@ -8,6 +8,7 @@ using System.Text;
 using TechTalk.SpecFlow;
 using static Test.SharedHelper;
 using OpenQA.Selenium.Interactions;
+using System.Threading;
 
 namespace Test.ControlSteps
 {
@@ -54,8 +55,8 @@ namespace Test.ControlSteps
         [Then(@"I should see the Transaction Results")]
         public void ThenIShouldSeeTheTransactionResults()
         {
-            string title = _driver.Title;
-            var message =_driver.FindElement(By.ClassName("ng-scope")).Text;
+            Thread.Sleep(1000);
+            var message =_driver.FindElement(By.XPath("//*[@id='rightPanel']/div/div/h1")).Text;
             Assert.IsTrue(message.Contains("Transaction Results"));
         }
 

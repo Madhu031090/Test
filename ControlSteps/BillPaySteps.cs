@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using TechTalk.SpecFlow;
 using static Test.SharedHelper;
 
@@ -65,7 +66,7 @@ namespace Test.ControlSteps
         [Then(@"I should the bill pay service should be successful")]
         public void ThenIShouldTheBillPayServiceShouldBeSuccessful()
         {
-            
+            Thread.Sleep(1000);
             string _msgtext = _driver.FindElement(By.XPath("//*[@id='rightPanel']/div/div[2]/h1")).Text;
             Assert.AreEqual("Bill Payment Complete", _msgtext);
         }

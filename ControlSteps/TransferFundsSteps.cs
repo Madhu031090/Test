@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using TechTalk.SpecFlow;
 using static Test.Helpers.TestBaseHelper;
 using static Test.SharedHelper;
@@ -25,11 +26,7 @@ namespace Test.ControlSteps
             context = injectedContext;
         }
 
-        //[Given(@"I am on the transfer funds page")]
-        //public void GivenIAmOnTheTransferFundsPage()
-        //{
-
-        //}
+   
         [Given(@"I am on the transfer funds page")]
         public void GivenIAmOnTheTransferFundsPage()
         {
@@ -58,7 +55,7 @@ namespace Test.ControlSteps
         [When(@"then I select a From Account and a To Account")]
         public void WhenThenISelectAFromAccountAndAToAccount()
         {
-
+            //unable to implement this dropdown, value in drop down changes dynamically and there is no index to identify the element
             //SelectElement _fromAccountDropDown = new SelectElement(_driver.FindElement(By.Id("type")));
             //_fromAccountDropDown.SelectByValue(FromAccountID);
             //SelectElement _toAccountDropDown = new SelectElement(_driver.FindElement(By.Id("type")));
@@ -74,10 +71,9 @@ namespace Test.ControlSteps
         [Then(@"the transfer happens successfully")]
         public void ThenTheTransferHappensSuccessfully()
         {
-            //string _msgtext = _driver.FindElement(By.ClassName("title")).Text;
-           // string _msgtext =_driver.FindElement(By.ClassName("ng-binding")).Text;
-            //ToDo CheckAlertMessage
-          //  Assert.AreEqual("Transfer Complete!", _msgtext);
+            Thread.Sleep(1000);
+            string _msgtext = _driver.FindElement(By.XPath("//*[@id='rightPanel']/div/div/h1")).Text;
+            Assert.AreEqual("Transfer Complete!", _msgtext);
 
         }
 

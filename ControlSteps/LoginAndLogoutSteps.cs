@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using TechTalk.SpecFlow;
 using static Test.SharedHelper;
 
@@ -18,7 +19,7 @@ namespace Test.ControlSteps
 
         private readonly ScenarioContext context;
         IWebDriver _driver = new ChromeDriver();
-       
+
         string userName1 = "UserForTest";
         string lastName1 = "LastNameUser";
         string randomText = "TestText";
@@ -46,7 +47,6 @@ namespace Test.ControlSteps
         public void ThenICanSuccessfullyRegisterAndLoginToTheApplication()
         {
 
-            Password = "xyz";
             _driver.Navigate().GoToUrl("https://parabank.parasoft.com/parabank/index.htm");
             _driver.FindElement(By.LinkText("Register")).Click();
             Random random = new Random();
@@ -64,8 +64,10 @@ namespace Test.ControlSteps
             _driver.FindElement(By.Id("customer.password")).SendKeys(Password);
             _driver.FindElement(By.Id("repeatedPassword")).SendKeys(Password);
             _driver.FindElement(By.XPath("//*[@id='customerForm']/table/tbody/tr[13]/td[2]/input")).Click();
+            Thread.Sleep(1000);
             string _welcomeMessage = _driver.FindElement(By.ClassName("smallText")).Text;
             Assert.IsNotEmpty(_welcomeMessage);
+            
         }
 
         [When(@"When I click on Logout")]
@@ -77,8 +79,10 @@ namespace Test.ControlSteps
         [Then(@"I should be logged out of the application")]
         public void ThenIShouldBeLoggedOutOfTheApplication()
         {
+            //Return to the Login page
            string pageTitleText = _driver.FindElement(By.Id("leftPanel")).Text;
            Assert.IsTrue(pageTitleText.Contains("Customer Login"));
+            _driver.Close();
 
         }
 
