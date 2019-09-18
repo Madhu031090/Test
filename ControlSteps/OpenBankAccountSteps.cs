@@ -13,6 +13,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using static Test.SharedHelper;
 using Newtonsoft.Json;
+using System.Threading;
 //using static Test.Helpers.TestBaseHelper;
 
 namespace Test.ControlSteps
@@ -121,7 +122,7 @@ namespace Test.ControlSteps
         [When(@"when I choose any existing account")]
         public void WhenWhenIChooseAnyExistingAccount()
         { 
-            //Unable to implement this because the WebElement does not have a unique Identifier
+            //***Unable to implement this because the WebElement does not have a unique Identifier***
             //SelectElement dropdown = new SelectElement(_driver.FindElement(By.Id("fromAccountId")));
             //dropdown.SelectByIndex(1);
         }
@@ -129,19 +130,23 @@ namespace Test.ControlSteps
         [When(@"click on Open New Account Button")]
         public void WhenClickOnOpenNewAccountButton()
         {
-            _driver.FindElement(By.XPath("//*[@id='rightPanel']/div/div/form/div/input")).Click(); 
+           // _driver.FindElement(By.XPath("//*[@id='rightPanel']/div/div/form/div/input")).Click();
+        }
+
+        [When(@"click on Open New Account Button to create a new account")]
+        public void WhenClickOnOpenNewAccountButtonToCreateANewAccount()
+        {
+            Thread.Sleep(1000);
+            _driver.FindElement(By.XPath("//*[@id='rightPanel']/div/div/form/div/input")).Click();
         }
 
         [Then(@"I should see the success message")]
         public void ThenIShouldSeeTheSuccessMessage()
         {
-             string _msgtext = _driver.FindElement(By.ClassName("title")).Text;
-            //ToDo Change the Assert text
-           // Assert.AreEqual("Account Opened!", _msgtext);
+           Thread.Sleep(1000);
+           string _msgtext = _driver.FindElement(By.XPath("//*[@id='rightPanel']/div/div/h1")).Text;
+           Assert.AreEqual("Account Opened!", _msgtext);
         }
-
-
-
 
     }
 }

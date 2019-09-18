@@ -11,7 +11,7 @@ Given I have logged in and I am on the home page
 	Then I should land on the Open New Account Page
 	When I choose the <AccountType> 
 	And when I choose any existing account
-	And click on Open New Account Button
+	And click on Open New Account Button to create a new account
 	Then I should see the success message
 	Examples:
 	| AccountType | 

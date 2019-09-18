@@ -87,17 +87,19 @@ testRunner.Given("I have logged in and I am on the home page", ((string)(null)),
 #line 11
  testRunner.Then("I should land on the Open New Account Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 12
- testRunner.When(string.Format("I choose the {0} and an existing account", accountType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("I choose the {0}", accountType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 13
- testRunner.And("click on Open New Account Button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("when I choose any existing account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 14
+ testRunner.And("click on Open New Account Button to create a new account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 15
  testRunner.Then("I should see the success message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("UITest - Open a Checking or Savings Bank Account, Checking", new string[] {
-                "OpenBankAccount"}, SourceLine=16)]
+                "OpenBankAccount"}, SourceLine=17)]
         public virtual void UITest_OpenACheckingOrSavingsBankAccount_Checking()
         {
 #line 8
@@ -106,7 +108,7 @@ this.UITest_OpenACheckingOrSavingsBankAccount("Checking", ((string[])(null)));
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("UITest - Open a Checking or Savings Bank Account, Savings", new string[] {
-                "OpenBankAccount"}, SourceLine=16)]
+                "OpenBankAccount"}, SourceLine=17)]
         public virtual void UITest_OpenACheckingOrSavingsBankAccount_Savings()
         {
 #line 8
@@ -115,38 +117,38 @@ this.UITest_OpenACheckingOrSavingsBankAccount("Savings", ((string[])(null)));
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("ControllerTest - Authentionation of Bank Account Controller", new string[] {
-                "OpenBankAccount"}, SourceLine=21)]
+                "OpenBankAccount"}, SourceLine=22)]
         public virtual void ControllerTest_AuthentionationOfBankAccountController()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("ControllerTest - Authentionation of Bank Account Controller", null, new string[] {
                         "OpenBankAccount"});
-#line 22
+#line 23
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 23
- testRunner.Given("I make a POST call to the CreateAccount Controller without credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 24
+ testRunner.Given("I make a POST call to the CreateAccount Controller without credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 25
  testRunner.Then("I should get an unauthorized status", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("ControllerTest - Post Call to get the Response of Bank Account Controller", new string[] {
-                "OpenBankAccount"}, SourceLine=26)]
+                "OpenBankAccount"}, SourceLine=27)]
         public virtual void ControllerTest_PostCallToGetTheResponseOfBankAccountController()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("ControllerTest - Post Call to get the Response of Bank Account Controller", null, new string[] {
                         "OpenBankAccount"});
-#line 27
+#line 28
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 28
- testRunner.When("I click on Open New Account link", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 29
- testRunner.Then("I should land on the Open New Account Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("I click on Open New Account link", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 30
- testRunner.Given("I make a POST call to the CreateAccount Controller", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Then("I should land on the Open New Account Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 31
+ testRunner.Given("I make a POST call to the CreateAccount Controller", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 32
  testRunner.Then("I should get the response of the Bank Account Controller", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
