@@ -1,6 +1,4 @@
-Project Title:
-
-Test - A complete E2E automation Suite consisting of UI and Controller tests for a banking website using C# and Specflow.
+Project Title: "Test" - A complete E2E automation Suite consisting of UI and Controller tests for a banking website using C# and Specflow.
 Selenium for UI and RestSharp for API tests.
 
 Versions Used in this Project:
